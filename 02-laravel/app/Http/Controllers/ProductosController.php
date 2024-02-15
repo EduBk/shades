@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Producto;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
+
+use App\Models\Producto;
+use App\Models\File;
 
 class ProductosController extends Controller
 {
@@ -16,8 +18,9 @@ class ProductosController extends Controller
     public function index(): View
     {
         $productos = Producto::all();
+        $files = File::all();
 
-        return view('index', ['productos' => $productos]);
+        return view('index', ['productos' => $productos, 'archivos' => $files]);
     }
 
     /**
